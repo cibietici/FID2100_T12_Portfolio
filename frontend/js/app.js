@@ -1,3 +1,8 @@
+const urlString = window.location.search;
+const paramsUrl = new URLSearchParams(urlString);
+const pageValue = paramsUrl.get('page');
+console.log(pageValue);
+
 const projectID = 'd0ks1b6r';
 
 const query = `
@@ -10,12 +15,15 @@ const query = `
   }
 `;
 
-const url = `https://${projectID}.api.sanity.io/v2021-10-21/data/query/production?query=${query}`;
+const url = `https://${projectID}.api.sanity.io/v2021-10-21/data/query/production?query=${encodeURI(query)}`;
 
 async function getData() {
    const response = await fetch(url);
    const { result } = await response.json();
    console.log(result);
+
+
+
 
    const projectList = document.getElementById('projects-list');
    console.log(projectList)
@@ -35,4 +43,8 @@ async function getData() {
    projectList.append(ulList);
 }
 
-getData();
+//getData();
+
+const about = 'I am about';
+const project = 'i am project';
+const home = 'i am home';

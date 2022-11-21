@@ -1,3 +1,42 @@
 html, body {
-    background-color: #cccccc;
+    background-color: var(--background-color);
+    color: var(--font-color);
+    font-size: 20px;
+}
+
+.header {
+    background-color: rgb(189, 189, 189);
+}
+
+.header--centered {
+    max-width: var(--max-width);
+    width: 100%;
+    min-height: 3rem;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.main--centered {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-family: var(--app-font);
+}
+
+p {
+    font-size: 1rem;
+    font-family: var(--app-font);
 }
