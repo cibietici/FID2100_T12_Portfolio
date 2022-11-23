@@ -4,8 +4,24 @@ html, body {
     font-size: 20px;
 }
 
+.skip-to {
+   position: absolute; 
+   z-index: 10;
+   transform: translateY(-100px);
+   padding: 0.5rem;
+   background-color: #666;
+   color: #fff;
+}
+
+.skip-to:focus {
+    transform: translateY(0px);
+}
+
 .header {
-    background-color: rgb(189, 189, 189);
+    /* background-color: rgb(189, 189, 189); */
+    background-color: transparent;
+    z-index: 5;
+    position: relative;
 }
 
 .header--centered {
@@ -25,6 +41,28 @@ nav ul {
     gap: 0.5rem;
 }
 
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url('../assets/hero_cover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(-60px);
+}
+
+.hero .arrow {
+    width: 5rem;
+    position: absolute;
+    bottom: 2rem;
+}
+
 .main--centered {
     max-width: var(--max-width);
     width: 100%;
@@ -39,4 +77,21 @@ h1 {
 p {
     font-size: 1rem;
     font-family: var(--app-font);
+}
+
+.projects-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem
+}
+
+.card {
+    display: inline-block;
+    width: 15rem;
+    background-color: #fff;
+    padding: 0.5rem;
+}
+
+.card img {
+    width: 100%;
 }

@@ -1,7 +1,10 @@
-const urlString = window.location.search;
+/* const urlString = window.location.search;
+console.log(urlString)
 const paramsUrl = new URLSearchParams(urlString);
+console.log(paramsUrl);
 const pageValue = paramsUrl.get('page');
-console.log(pageValue);
+console.log(pageValue); */
+
 
 const projectID = 'd0ks1b6r';
 
@@ -22,29 +25,22 @@ async function getData() {
    const { result } = await response.json();
    console.log(result);
 
-
-
-
-   const projectList = document.getElementById('projects-list');
-   console.log(projectList)
-   const ulList = document.createElement('ul');
-   console.log(ulList)
-
+   const projectsEl = document.querySelector('.projects-wrapper');
    result.forEach(project => {
-        const liEl = document.createElement('li');
-        liEl.textContent = project.title;
-        const imgEl = document.createElement('img');
-        imgEl.setAttribute('src', project.bilde);
-        imgEl.setAttribute('width', '200')
-        liEl.append(imgEl);
-        ulList.append(liEl);
-   });
+    const cardEl = document.createElement('a');
+    cardEl.classList.add('card');
+    cardEl.setAttribute('href', `/${project.slug.current}`);
+    const coverEl = document.createElement('img');
+    coverEl.setAttribute('src', project.bilde);
+    const titleEl = document.createElement('h4');
+    titleEl.textContent = project.title;
+    cardEl.append(coverEl);
+    cardEl.append(titleEl);
+    projectsEl.append(cardEl)
+    console.log(projectsEl)
+   })
 
-   projectList.append(ulList);
+
 }
 
-//getData();
-
-const about = 'I am about';
-const project = 'i am project';
-const home = 'i am home';
+getData();
