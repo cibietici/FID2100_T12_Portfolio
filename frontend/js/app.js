@@ -1,9 +1,11 @@
+import handleHamburger from './menu.js';
 /* const urlString = window.location.search;
 console.log(urlString)
 const paramsUrl = new URLSearchParams(urlString);
 console.log(paramsUrl);
 const pageValue = paramsUrl.get('page');
 console.log(pageValue); */
+handleHamburger();
 
 
 const projectID = 'd0ks1b6r';
@@ -37,7 +39,6 @@ async function getData() {
     cardEl.append(coverEl);
     cardEl.append(titleEl);
     projectsEl.append(cardEl)
-    console.log(projectsEl)
    })
 
 

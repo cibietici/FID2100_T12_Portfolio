@@ -20,7 +20,7 @@
                 <a href="/" aria-label="back to homepage">
                     logo
                 </a>
-                <nav>
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="/about">About me</a></li>
                         <li><a href="/projects">Projects</a></li>
@@ -28,11 +28,31 @@
                         <li><a href="/contacts">Contacts</a></li>
                     </ul>
                 </nav>
+                <nav class="mobile-nav">
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/articles">Articles</a></li>
+                        <li><a href="/contacts">Contacts</a></li>
+                    </ul>
+                </nav>
+                <img src="./assets/hamburger.svg" class="mobile-menu-icon">
             </div>
         </header>
+        <nav class="overlay-menu hidden">
+            <ul>
+                <li><a class="close">X</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/contacts">Contacts</a></li>
+            </ul>
+        </nav>
         <section class="hero">
-            <h1>Portfolio</h1>
-            <h2>Stefen Blask</h2>
+            <div class="main-title-site">
+                <h1>Portfolio</h1>
+                <h2>Stefen Blask</h2> 
+            </div>
             <a href="#main-content" aria-label="main content">
                 <img src="./assets/arrow_down.svg" 
                     class="arrow" 
@@ -45,6 +65,10 @@
             <section class="projects-wrapper">
 
             </section>
+
+            <div class="animatio">
+            </div>
+
         </main>      
     </body>
 </html>

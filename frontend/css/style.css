@@ -19,9 +19,18 @@ html, body {
 
 .header {
     /* background-color: rgb(189, 189, 189); */
-    background-color: transparent;
+    background: linear-gradient(
+        180deg, 
+        rgba(0, 0, 0, 0.6) 0%, 
+        rgba(217, 217, 217, 0) 100%);
     z-index: 5;
     position: relative;
+    min-height: 5rem;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .header--centered {
@@ -33,6 +42,60 @@ html, body {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.mobile-nav {
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    z-index: 10;
+    min-height: 2.5rem;
+    padding: 0.4rem;
+}
+
+.overlay-menu {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay-menu ul {
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 2rem;
+}
+
+.overlay-menu ul a {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 540px) {
+    .desktop-nav {
+        display: block;
+    }
+    .mobile-nav {
+        display: none;
+    }
+    .mobile-menu-icon {
+        display: none;
+    }
 }
 
 nav ul {
@@ -47,20 +110,25 @@ nav ul {
     background-color: blueviolet;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
     align-items: center;
     position: relative;
     background-image: url('../assets/hero_cover.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: translateY(-60px);
+    transform: translateY(-100px);
+}
+
+.hero .main-title-site {
+    margin: auto 0;
+}
+
+.hero h2 {
+    margin: auto 0;
 }
 
 .hero .arrow {
     width: 5rem;
-    position: absolute;
-    bottom: 2rem;
 }
 
 .main--centered {
@@ -95,3 +163,5 @@ p {
 .card img {
     width: 100%;
 }
+
+
