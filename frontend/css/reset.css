@@ -3,3 +3,13 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+@media (prefers-reduced-motion) {
+    html, body {
+      scroll-behavior: unset!important;
+    }
+    * {
+        animation-duration: 0.00000000001s!important;
+        transition: 0.00000000001s!important;
+    }
+}

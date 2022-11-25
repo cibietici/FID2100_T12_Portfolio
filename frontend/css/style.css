@@ -2,6 +2,8 @@ html, body {
     background-color: var(--background-color);
     color: var(--font-color);
     font-size: 20px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .skip-to {
@@ -104,6 +106,26 @@ nav ul {
     gap: 0.5rem;
 }
 
+.desktop-nav ul li a {
+    color: #fff;
+    transition: color 0.4s ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.desktop-nav ul li a:hover {
+    color: rgb(219, 211, 54);
+}
+
+.desktop-nav ul li {
+    border-bottom: 0.15rem solid transparent;
+    padding: 0 0.3rem 0.2rem 0.3rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.desktop-nav ul li:hover {
+    border-bottom: 0.15rem solid rgb(219, 211, 54);
+}
+
 .hero {
     width: 100vw;
     height: 100vh;
@@ -129,6 +151,22 @@ nav ul {
 
 .hero .arrow {
     width: 5rem;
+    animation-name: bounceArrow;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bounceArrow {
+    from {
+        transform: translateY(0px);
+    }
+    60% {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
 }
 
 .main--centered {
