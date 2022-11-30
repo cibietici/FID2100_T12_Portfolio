@@ -201,3 +201,7 @@ p {
 .card img {
     width: 100%;
 }
+
+.project__cover {
+    width: 100%;
+}

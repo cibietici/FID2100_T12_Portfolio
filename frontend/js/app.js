@@ -1,16 +1,12 @@
 import handleHamburger from './menu.js';
-/* const urlString = window.location.search;
-console.log(urlString)
-const paramsUrl = new URLSearchParams(urlString);
-console.log(paramsUrl);
-const pageValue = paramsUrl.get('page');
-console.log(pageValue); */
+import readUrl from './utils.js';
+import { sanityUrl } from './env.js';
+
 handleHamburger();
 
-const urlString = window.location.search;
-console.log(urlString.slice(1));
+const urlString = readUrl();
 
-const projectID = 'd0ks1b6r';
+// querystring for sanity
 
 const queryAllProjects = `
 *[_type == "project"]{
@@ -23,29 +19,45 @@ const queryAllProjects = `
 `;
 
 const querySingleProject = `
-  *[slug.current == "${urlString.slice(1)}"]
+  *[slug.current == "${urlString}"]{
+    title,
+    "cover": cover.asset->url,
+    process
+  }
 `;
 
-const url = `https://${projectID}.api.sanity.io/v2021-10-21/data/query/production?query=`;
+// end of queries
 
 async function getProject() {
-  if(urlString !== '') {
-    const response = await fetch(`${url}${encodeURI(querySingleProject)}`);
-    const { result } = await response.json();
-    console.log(result);
-  }
+  const response = await fetch(`${sanityUrl}${encodeURI(querySingleProject)}`);
+  const { result } = await response.json();
+  renderSingleProject(result);
 }
 
-getProject();
+function renderSingleProject(result) {
+  const titleEl = document.querySelector('.single-project__title');
+  titleEl.textContent = result[0].title;
+  const coverProjectEl = document.querySelector('.project__cover');
+  coverProjectEl.setAttribute('src', result[0].cover);
+  const projectTextEl = document.querySelector('.project-text');
+  projectTextEl.textContent = result[0].process;
+}
 
+if(urlString !== undefined) {
+  getProject();
+}
 
-async function getData() {
-   const response = await fetch(`${url}${encodeURI(queryAllProjects)}`);
-   const { result } = await response.json();
-   console.log(result);
+async function getAllProjects() {
+  const response = await fetch(`${sanityUrl}${encodeURI(queryAllProjects)}`);
+  const { result } = await response.json();
 
-   const projectsEl = document.querySelector('.projects-wrapper');
-   result.forEach(project => {
+  renderProjectsList(result);
+}
+
+function renderProjectsList(result) {
+    const projectsEl = document.querySelector('.projects-wrapper');
+    
+    result.forEach(project => {
     const cardEl = document.createElement('a');
     cardEl.classList.add('card');
     cardEl.setAttribute('href', `/projects/?${project.slug.current}`);
@@ -55,8 +67,11 @@ async function getData() {
     titleEl.textContent = project.title;
     cardEl.append(coverEl);
     cardEl.append(titleEl);
-    projectsEl.append(cardEl)
-   })
+    projectsEl.append(cardEl);
+  })
 }
 
-getData();
+if(urlString === undefined) {
+  getAllProjects();
+}
+
