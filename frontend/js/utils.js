@@ -3,15 +3,13 @@ import { cdnUrl } from "./env.js";
 export function readUrl() {
     const urlString = window.location.search;
     if(urlString) {
-        return (urlString.slice(1)); 
+        return (urlString.slice(1)); // slice remove the "?" from the url
     }
     return undefined;
 };
 
 export function handleParagraphs(blockContent, container) {
-    console.log(container)
     const blockContainer = document.getElementById(container);
-    console.log(blockContent)
 
     blockContent.map(p => {
         if(p._type === 'block') {

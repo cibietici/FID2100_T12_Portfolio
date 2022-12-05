@@ -1,14 +1,14 @@
 import handleHamburger from './menu.js';
 import { readUrl } from './utils.js';
 import { sanityUrl } from './env.js';
-import { handleParagraphs } from './utils.js'
+import { handleParagraphs } from './utils.js';
 
-handleHamburger();
+handleHamburger(); // invoke the hamburger menu handling
 
+// we assign to a variable the url string reading
 const urlString = readUrl();
 
 // querystring for sanity
-
 const queryAllProjects = `
 *[_type == "project"]{
     title,
@@ -26,9 +26,9 @@ const querySingleProject = `
     process
   }
 `;
+// end of queries to sanity
 
-// end of queries
-
+// get single project page
 async function getProject() {
   const response = await fetch(`${sanityUrl}${encodeURI(querySingleProject)}`);
   const { result } = await response.json();
@@ -42,18 +42,19 @@ function renderSingleProject(result) {
   coverProjectEl.setAttribute('src', result[0].cover);
   
   handleParagraphs(result[0].process, 'processContent');
-  handleParagraphs(result[0].coreproblem, 'core-problem');
 }
 
 if(urlString !== undefined) {
   getProject();
 }
+// end of single project page function
 
+// get all projects list for frontpage
 async function getAllProjects() {
   const response = await fetch(`${sanityUrl}${encodeURI(queryAllProjects)}`);
   const { result } = await response.json();
 
-  renderProjectsList(result);
+  renderProjectsList(result); // invoke function in line 61 sending in data from sanity
 }
 
 function renderProjectsList(result) {
@@ -73,7 +74,8 @@ function renderProjectsList(result) {
   })
 }
 
+// conditional invoke of all project for frontpage
 if(urlString === undefined) {
   getAllProjects();
 }
-
+// end of projects in frontpage
