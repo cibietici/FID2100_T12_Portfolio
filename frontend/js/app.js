@@ -1,6 +1,7 @@
 import handleHamburger from './menu.js';
-import readUrl from './utils.js';
+import { readUrl } from './utils.js';
 import { sanityUrl } from './env.js';
+import { handleParagraphs } from './utils.js'
 
 handleHamburger();
 
@@ -39,8 +40,9 @@ function renderSingleProject(result) {
   titleEl.textContent = result[0].title;
   const coverProjectEl = document.querySelector('.project__cover');
   coverProjectEl.setAttribute('src', result[0].cover);
-  const projectTextEl = document.querySelector('.project-text');
-  projectTextEl.textContent = result[0].process;
+  
+  handleParagraphs(result[0].process, 'processContent');
+  handleParagraphs(result[0].coreproblem, 'core-problem');
 }
 
 if(urlString !== undefined) {
