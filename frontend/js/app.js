@@ -7,6 +7,7 @@ handleHamburger(); // invoke the hamburger menu handling
 
 // we assign to a variable the url string reading
 const urlString = readUrl();
+console.log(urlString)
 
 // querystring for sanity
 const queryAllProjects = `

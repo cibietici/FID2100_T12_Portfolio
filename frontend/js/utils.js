@@ -1,9 +1,18 @@
 import { cdnUrl } from "./env.js";
 
 export function readUrl() {
-    const urlString = window.location.search;
-    if(urlString) {
-        return (urlString.slice(1)); // slice remove the "?" from the url
+    const allUrl = window.location.href;
+    if(allUrl.includes('about')) {
+        return 'about'
+    }
+    if(allUrl.includes('contact')) {
+        return 'contact'
+    }
+    if(allUrl.includes('projects')) {
+        const urlString = window.location.search;
+        if(urlString) {
+            return (urlString.slice(1)); // slice remove the "?" from the url
+        }
     }
     return undefined;
 };
