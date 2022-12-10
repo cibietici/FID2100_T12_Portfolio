@@ -24,7 +24,8 @@ const querySingleProject = `
   *[slug.current == "${urlString}"]{
     title,
     "cover": cover.asset->url,
-    process
+    process,
+    tools[]->
   }
 `;
 // end of queries to sanity
