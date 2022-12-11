@@ -28,6 +28,8 @@ const querySingleProject = `
     tools[]->
   }
 `;
+//if you have tools with icons use
+//tools[]->{software, "icon": icon.asset->url}
 // end of queries to sanity
 
 // get single project page
