@@ -1,4 +1,5 @@
-import { cdnUrl, S_token, sanityUrl, projectID } from "./env.js";
+import { cdnUrl, sanityUrl, projectID } from "./env.js";
+import { S_token } from "./token.js";
 
 export function readUrl() {
     const allUrl = window.location.href;

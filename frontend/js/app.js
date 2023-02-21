@@ -89,7 +89,7 @@ sendDataButton.addEventListener('click', async () => {
   const mutations = [{
     createOrReplace: {
       _type: 'post',
-      title: 'A new post'
+      title: 'A quite good post'
     }
   }];
   await postData(mutations);
