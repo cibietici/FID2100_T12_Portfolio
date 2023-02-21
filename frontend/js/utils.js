@@ -1,4 +1,4 @@
-import { cdnUrl } from "./env.js";
+import { cdnUrl, S_token, sanityUrl, projectID } from "./env.js";
 
 export function readUrl() {
     const allUrl = window.location.href;
@@ -48,3 +48,21 @@ export function handleParagraphs(blockContent, container) {
         };
     });
 };
+
+export async function postData(mutations) {
+    const url = `https://${projectID}.api.sanity.io/v2021-06-07/data/mutate/production`;
+    const response = await fetch(
+        url,
+        {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${S_token}`
+            },
+            body: JSON.stringify({mutations})
+        }
+    );
+    const result = await response.json();
+    console.log(result);
+    return result;
+} 
