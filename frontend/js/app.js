@@ -1,7 +1,7 @@
 import handleHamburger from './menu.js';
 import { readUrl } from './utils.js';
 import { sanityUrl } from './env.js';
-import { handleParagraphs } from './utils.js';
+import { handleParagraphs, postData } from './utils.js';
 
 handleHamburger(); // invoke the hamburger menu handling
 
@@ -83,3 +83,14 @@ if(urlString === undefined) {
   getAllProjects();
 }
 // end of projects in frontpage
+
+const sendDataButton = document.querySelector('.post-result button');
+sendDataButton.addEventListener('click', async () => {
+  const mutations = [{
+    createOrReplace: {
+      _type: 'post',
+      title: 'A new good post'
+    }
+  }];
+  await postData(mutations);
+});
