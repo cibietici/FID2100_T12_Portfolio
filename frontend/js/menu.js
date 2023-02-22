@@ -3,12 +3,12 @@ export default function handleHamburger() {
     const overlayMenuEl = document.querySelector('.overlay-menu');
     const exitMenuEl = document.querySelector('.close');
 
-    hamburgerIconEl.addEventListener('click', (e) => {
-        e.preventDefault();
+    hamburgerIconEl.addEventListener('click', (event) => {
+        event.preventDefault();
         overlayMenuEl.classList.remove('hidden');
     });
-    exitMenuEl.addEventListener('click', (e) => {
-        e.preventDefault();
+    exitMenuEl.addEventListener('click', (event) => {
+        event.preventDefault();
         overlayMenuEl.classList.add('hidden');
     });
   }
